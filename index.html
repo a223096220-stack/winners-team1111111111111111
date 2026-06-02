@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>발로란트 대리 위너스팀 | 발로 대리·배치고사</title>
+    <title>위너스팀 | 발로란트 대리</title>
     <meta name="description" content="발로란트 대리, 발로 대리, 배치고사, 승당제와 승급제 가격표, 기사 소개, FAQ, 상담 안내를 제공하는 위너스팀 공식 사이트입니다.">
     <link rel="canonical" href="https://winner-steam.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="위너스팀">
     <meta property="og:url" content="https://winner-steam.com/">
-    <meta property="og:title" content="발로란트 대리 위너스팀 | 발로 대리·배치고사">
+    <meta property="og:title" content="위너스팀 | 발로란트 대리">
     <meta property="og:description" content="발로란트 대리, 배치고사, 승당제와 승급제 가격표, 기사 소개, FAQ, 상담 안내를 제공하는 위너스팀 공식 사이트입니다.">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="발로란트 대리 위너스팀 | 발로 대리·배치고사">
+    <meta name="twitter:title" content="위너스팀 | 발로란트 대리">
     <meta name="twitter:description" content="발로란트 대리, 배치고사, 승당제와 승급제 가격표, 기사 소개, FAQ, 상담 안내를 제공하는 위너스팀 공식 사이트입니다.">
     <meta name="naver-site-verification" content="f3e8773af53df0661179b0694e8f55e7a468969f" />
     <meta name="google-site-verification" content="3L900XzGCsJw-vgi4b6sDDcoaMfLSC2vPy-etXRYnvg" />
+    <link rel="icon" href="/assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -237,6 +242,94 @@
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
+        }
+
+        /* 3. 주요 서비스 섹션 */
+        .section-services {
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+
+        .section-services h2 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 0;
+            margin-bottom: 34px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            position: relative;
+            min-height: 210px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            overflow: hidden;
+            text-align: left;
+            background: linear-gradient(145deg, rgba(13, 13, 24, 0.96), rgba(20, 9, 18, 0.96));
+            border: 1px solid rgba(255, 42, 95, 0.22);
+            border-radius: 14px;
+            padding: 34px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 18%, rgba(255, 42, 95, 0.18), transparent 38%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            left: 34px;
+            right: 34px;
+            bottom: 26px;
+            height: 1px;
+            background: linear-gradient(90deg, #ff2a5f, transparent);
+            opacity: 0.75;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 42, 95, 0.58);
+            box-shadow: 0 18px 42px rgba(255, 42, 95, 0.18);
+        }
+
+        .service-kicker {
+            position: relative;
+            color: #ff2a5f;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .service-card h3 {
+            position: relative;
+            color: #ffffff;
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0;
+            margin-bottom: 18px;
+        }
+
+        .service-card p {
+            position: relative;
+            color: #cbd5e1;
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.6;
+            word-break: keep-all;
         }
 
         /* 3. 가격표 섹션 스타일 */
@@ -682,6 +775,8 @@
             .hero-buttons { justify-content: center; }
             .hero-image-box { width: 320px; height: 320px; }
             .character-placeholder { font-size: 100px; }
+            .service-grid { grid-template-columns: 1fr; }
+            .service-card { min-height: 180px; text-align: center; align-items: center; }
             .price-container { grid-template-columns: 1fr; gap: 30px; }
             .driver-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -731,7 +826,29 @@
             </div>
         </section>
 
-        <!-- 3. 가격표 섹션 (수정 완료) -->
+        <!-- 3. 주요 서비스 섹션 -->
+        <section class="section-services" id="services">
+            <h2>주요 서비스</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-kicker">01 SERVICE</div>
+                    <h3>대리</h3>
+                    <p>티어와 목표 구간에 맞춰 안정적으로 진행합니다.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-kicker">02 SERVICE</div>
+                    <h3>듀오</h3>
+                    <p>함께 플레이하며 피드백과 티어 상승을 돕습니다.</p>
+                </div>
+                <a class="service-card" href="#price">
+                    <div class="service-kicker">03 SERVICE</div>
+                    <h3>가격표</h3>
+                    <p>승당제와 승급제 금액을 한눈에 확인할 수 있습니다.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. 가격표 섹션 (수정 완료) -->
         <section class="section-price" id="price">
             <h2>발로란트 대리 가격표</h2>
 
