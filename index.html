@@ -135,16 +135,18 @@
         }
 
         .hero-text-box {
-            max-width: 550px;
+            max-width: 640px;
             z-index: 2;
         }
 
         .hero-text-box h1 {
-            font-size: 56px;
+            font-size: 48px;
             font-weight: 900;
-            line-height: 1.2;
+            line-height: 1.15;
             margin-bottom: 20px;
-            letter-spacing: -1px;
+            letter-spacing: 0;
+            white-space: nowrap;
+            word-break: keep-all;
         }
 
         .hero-text-box p {
@@ -661,6 +663,7 @@
                 padding-top: 100px;
             }
             .hero-text-box { margin-bottom: 40px; }
+            .hero-text-box h1 { font-size: 42px; }
             .hero-buttons { justify-content: center; }
             .hero-image-box { width: 320px; height: 320px; }
             .character-placeholder { font-size: 100px; }
@@ -670,7 +673,10 @@
 
         @media (max-width: 640px) {
             header nav { display: none; }
-            .hero-text-box h1 { font-size: 38px; }
+            .hero-text-box h1 {
+                font-size: 34px;
+                white-space: normal;
+            }
             .driver-grid { grid-template-columns: 1fr; }
         }
     </style>
