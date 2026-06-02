@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위너스팀 | WINNERS TEAM</title>
+    <!-- 구글 폰트 (Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #06060c;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 1. 상단 네비게이션 바 */
+        header {
+            background-color: rgba(6, 6, 12, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 999;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: #ff2a5f;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            font-size: 15px;
+            font-weight: 700;
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+
+        nav ul li a:hover {
+            color: #ffffff;
+        }
+
+        .btn-customer {
+            border: 1px solid #334155;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, 0.02);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-customer:hover {
+            background-color: #ff2a5f;
+            border-color: #ff2a5f;
+        }
+
+        /* 전체 컨테이너 규격 */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 2. 메인 히어로 홈 화면 */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 70px;
+            position: relative;
+        }
+
+        .hero-text-box {
+            max-width: 550px;
+            z-index: 2;
+        }
+
+        .hero-text-box h1 {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text-box p {
+            font-size: 18px;
+            color: #cbd5e1;
+            font-weight: 500;
+            margin-bottom: 35px;
+            word-break: keep-all;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-main-action {
+            background: linear-gradient(90deg, #ff2a5f 0%, #ff1493 100%);
+            color: #ffffff;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-main-action:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .btn-sub-action {
+            background-color: #1e1e30;
+            color: #ffffff;
+            border: 1px solid #334155;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-sub-action:hover {
+            background-color: #2d2d44;
+        }
+
+        .hero-image-box {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .character-placeholder {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 42, 95, 0.2) 0%, rgba(0,0,0,0) 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 180px;
+            filter: drop-shadow(0 0 30px rgba(255, 42, 95, 0.6));
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 3. 가격표 섹션 스타일 */
+        .section-price {
+            padding: 100px 0 40px 0;
+            text-align: center;
+        }
+
+        .section-price h2 {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 40px;
+        }
+
+        .price-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .price-box {
+            background-color: #0b0b14;
+            border: 1px solid #1e1e30;
+            border-radius: 16px;
+            padding: 40px 30px;
+        }
+
+        .price-box h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .price-desc {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            background-color: #1e1b4b;
+            color: #a5b4fc;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-table th {
+            font-size: 14px;
+            font-weight: 700;
+            color: #64748b;
+            padding: 12px 8px;
+            border-bottom: 1px solid #1e1e30;
+            text-align: left;
+        }
+
+        .price-table th:last-child {
+            text-align: right;
+        }
+
+        .price-table td {
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: left;
+        }
+
+        .price-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tier-name {
+            color: #e2e8f0;
+        }
+
+        .tier-price {
+            color: #ff2a5f;
+            text-align: right;
+            font-weight: 900;
+        }
+
+        .btn-table-order {
+            background-color: #161624;
+            color: #cbd5e1;
+            border: 1px solid #27273a;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 15px;
+        }
+
+        .btn-table-order:hover {
+            background-color: #ff2a5f;
+            color: #ffffff;
+            border-color: #ff2a5f;
+        }
+
+        /* 4. 기사 소개 섹션 */
+        .section-drivers {
+            padding: 100px 0 40px 0;
+            text-align: center;
+        }
+
+        .section-drivers h2 {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+
+        .section-drivers p.subtitle {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-bottom: 50px;
+        }
+
+        .driver-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .driver-card {
+            background-color: #0b0b14;
+            border: 1px solid #1e1e30;
+            border-radius: 14px;
+            padding: 30px 24px;
+            text-align: left;
+            position: relative;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .driver-card:hover {
+            border-color: #ff2a5f;
+            transform: translateY(-5px);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .badge.gold {
+            background-color: rgba(217, 119, 6, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(217, 119, 6, 0.3);
+        }
+
+        .badge.red {
+            background-color: rgba(220, 38, 38, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .avatar-box {
+            width: 100%;
+            height: 160px;
+            background-color: #161624;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .avatar-placeholder {
+            font-size: 50px;
+            opacity: 0.8;
+        }
+
+        .driver-id-badge {
+            background-color: #1e1b4b;
+            color: #a5b4fc;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .driver-name {
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #ff2a5f;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .info-subtext {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* 5. 자주 묻는 질문 (FAQ) 섹션 */
+        .section-faq {
+            padding: 100px 0;
+        }
+
+        .section-faq h2 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background-color: #0b0b14;
+            border: 1px solid #1e1e30;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 25px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question::after {
+            content: '▼';
+            font-size: 12px;
+            color: #64748b;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background-color: #0e0e1b;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer-content {
+            padding: 18px 25px;
+            font-size: 14px;
+            color: #cbd5e1;
+            font-weight: 500;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            line-height: 1.5;
+        }
+
+        /* 6. 공지성 실시간 이벤트 팝업 레이어 */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .event-popup {
+            background-color: #0b0b16;
+            border: 1px solid rgba(255, 42, 95, 0.2);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        .popup-close-x {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #94a3b8;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .popup-content {
+            padding: 45px 40px;
+            background-image: linear-gradient(135deg, rgba(255, 42, 95, 0.15) 0%, rgba(0,0,0,0) 60%);
+        }
+
+        .popup-title {
+            font-size: 38px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(255, 42, 95, 0.6);
+            margin-bottom: 2px;
+        }
+
+        .popup-subtitle {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff2a5f;
+            margin-bottom: 35px;
+        }
+
+        .event-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-bottom: 5px;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .event-num {
+            background-color: #ffffff;
+            color: #06060c;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 13px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .event-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .popup-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 15px 20px;
+            background-color: #080811;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .btn-close, .btn-cookie {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-close {
+            background-color: #27272a;
+            color: #a1a1aa;
+        }
+
+        .btn-cookie {
+            background-color: #ff2a5f;
+            color: #ffffff;
+        }
+
+        /* 7. 우측 하단 고정 우측 상담 버튼 */
+        .floating-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            z-index: 998;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .floating-banner:hover {
+            transform: scale(1.05);
+            background-color: #ff2a5f;
+            color: #ffffff;
+        }
+
+        /* 모바일 반응형 최적화 */
+        @media (max-width: 1024px) {
+            .hero-section {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding-top: 100px;
+            }
+            .hero-text-box { margin-bottom: 40px; }
+            .hero-buttons { justify-content: center; }
+            .hero-image-box { width: 320px; height: 320px; }
+            .character-placeholder { font-size: 100px; }
+            .price-container { grid-template-columns: 1fr; gap: 30px; }
+            .driver-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            header nav { display: none; }
+            .hero-text-box h1 { font-size: 38px; }
+            .driver-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 상단 네비게이션 헤더 바 -->
+    <header>
+        <div class="logo">WINNERS <span>TEAM</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#price">가격표</a></li>
+                <li><a href="#drivers">기사소개</a></li>
+                <li><a href="#">작업현황</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+        <div class="btn-customer" onclick="openChat()">고객센터</div>
+    </header>
+
+    <!-- 중앙 배치 웹 컨텐츠 -->
+    <div class="wrapper">
+
+        <!-- 2. 홈 대문 화면 -->
+        <section class="hero-section" id="home">
+            <div class="hero-text-box">
+                <h1>발로란트 위너스팀</h1>
+                <p>최저가, 최고의 실력, 보안에 철저한 위너스팀입니다.</p>
+                <div class="hero-buttons">
+                    <button class="btn-main-action" onclick="openChat()">상담 및 신청하기</button>
+                    <a href="#price"><button class="btn-sub-action">가격표 보기</button></a>
+                </div>
+            </div>
+            <div class="hero-image-box">
+                <div class="character-placeholder">🔮</div>
+            </div>
+        </section>
+
+        <!-- 3. 가격표 섹션 (수정 완료) -->
+        <section class="section-price" id="price">
+            <h2>SERVICE PRICE</h2>
+            
+            <div class="price-container">
+                <!-- 승당제 카드 (image_5822fc.png 기준 가격 100% 동일화) -->
+                <div class="price-box">
+                    <h3>승당제</h3>
+                    <span class="price-desc">2승 1패 = 1승</span>
+                    
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>티어구간</th>
+                                <th style="text-align: right;">단가 (1승당)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tier-name">IRON 아이언</td>
+                                <td class="tier-price">3,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">BRONZE 브론즈</td>
+                                <td class="tier-price">4,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">SILVER 실버</td>
+                                <td class="tier-price">5,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">GOLD 골드</td>
+                                <td class="tier-price">6,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">PLATINUM 플래티넘</td>
+                                <td class="tier-price">8,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">DIAMOND 다이아</td>
+                                <td class="tier-price">10,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">ASCENDANT 초월자 1</td>
+                                <td class="tier-price">14,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">ASCENDANT 초월자 2</td>
+                                <td class="tier-price">16,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">ASCENDANT 초월자 3</td>
+                                <td class="tier-price">18,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">IMMORTAL 불멸 1</td>
+                                <td class="tier-price">25,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">IMMORTAL 불멸 2</td>
+                                <td class="tier-price">30,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">IMMORTAL 불멸 3</td>
+                                <td class="tier-price">35,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">RADIANT 레디언트</td>
+                                <td class="tier-price" style="color: #a5b4fc;">문의 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 승급제 카드 (image_5822c3.png 기준 가격 100% 동일화) -->
+                <div class="price-box">
+                    <h3>승급제</h3>
+                    <span class="price-desc">기본 MMR 승당 20점 기준 / 한티어 승급</span>
+                    
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>티어구간</th>
+                                <th style="text-align: right;">단가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tier-name">IRON 아이언</td>
+                                <td class="tier-price">9,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">BRONZE 브론즈</td>
+                                <td class="tier-price">12,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">SILVER 실버</td>
+                                <td class="tier-price">15,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">GOLD 골드</td>
+                                <td class="tier-price">18,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">PLATINUM 플래티넘</td>
+                                <td class="tier-price">24,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">DIAMOND 다이아</td>
+                                <td class="tier-price">30,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">ASCENDANT 초월자 1</td>
+                                <td class="tier-price">42,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">ASCENDANT 초월자 2</td>
+                                <td class="tier-price">48,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">ASCENDANT 초월자 3</td>
+                                <td class="tier-price">54,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">IMMORTAL 불멸 1</td>
+                                <td class="tier-price">75,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">IMMORTAL 불멸 2</td>
+                                <td class="tier-price">85,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">IMMORTAL 불멸 3</td>
+                                <td class="tier-price">95,000원 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                            <tr>
+                                <td class="tier-name">RADIANT 레디언트</td>
+                                <td class="tier-price" style="color: #a5b4fc;">문의 <button class="btn-table-order" onclick="openChat()">신청하기</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 기사 소개 섹션 -->
+        <section class="section-drivers" id="drivers">
+            <h2>기사소개</h2>
+            <p class="subtitle">기사님들 기본 아시아서버</p>
+            
+            <div class="driver-grid">
+                <!-- 기사 1 -->
+                <div class="driver-card">
+                    <div class="badge gold">만족도 높은 기사</div>
+                    <div class="avatar-box"><div class="avatar-placeholder">👤</div></div>
+                    <div class="driver-id-badge">01</div>
+                    <div class="driver-name">X 기사님</div>
+                    
+                    <div class="info-label">최고티어</div>
+                    <div class="info-value">매시즌 레디언트 최상위 랭크 유지</div>
+                    
+                    <div class="info-label">성향 요약</div>
+                    <div class="info-value">신속 정확 승률 100%</div>
+                    
+                    <div class="info-subtext">아시아서버 1000점</div>
+                </div>
+
+                <!-- 기사 2 -->
+                <div class="driver-card">
+                    <div class="badge red">이달의 스피드 기사</div>
+                    <div class="avatar-box"><div class="avatar-placeholder">👤</div></div>
+                    <div class="driver-id-badge">02</div>
+                    <div class="driver-name">B 기사님</div>
+                    
+                    <div class="info-label">최고티어</div>
+                    <div class="info-value">매시즌 레디언트 최상위 랭크 유지</div>
+                    
+                    <div class="info-label">성향 요약</div>
+                    <div class="info-value">신속 정확 승률 100%</div>
+                    
+                    <div class="info-subtext">아시아서버 900점</div>
+                </div>
+
+                <!-- 기사 3 -->
+                <div class="driver-card">
+                    <div class="avatar-box"><div class="avatar-placeholder">👤</div></div>
+                    <div class="driver-id-badge">03</div>
+                    <div class="driver-name">J 기사님</div>
+                    
+                    <div class="info-label">최고티어</div>
+                    <div class="info-value">매시즌 레디언트 최상위 랭크 유지</div>
+                    
+                    <div class="info-label">성향 요약</div>
+                    <div class="info-value">신속 정확 승률 100%</div>
+                    
+                    <div class="info-subtext">아시아서버 800점</div>
+                </div>
+
+                <!-- 기사 4 -->
+                <div class="driver-card">
+                    <div class="avatar-box"><div class="avatar-placeholder">👤</div></div>
+                    <div class="driver-id-badge">04</div>
+                    <div class="driver-name">P 기사님</div>
+                    
+                    <div class="info-label">최고티어</div>
+                    <div class="info-value">매시즌 레디언트 최상위 랭크 유지</div>
+                    
+                    <div class="info-label">성향 요약</div>
+                    <div class="info-value">신속 정확 승률 100%</div>
+                    
+                    <div class="info-subtext">아시아 서버 1페이지</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 자주 묻는 질문 (FAQ) 섹션 -->
+        <section class="section-faq" id="faq">
+            <h2>자주 묻는 질문</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">위너스팀은 어떤 팀인가요?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">최저가 신속 보안 철저한 위너스팀입니다.</div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">어느 티어까지 가능한가요?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">레디언트 1페이지까지 가능합니다.</div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">결제 후 환불 가능한가요?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">작업 진행 전에는 환불 상담이 가능합니다.</div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">원하는 기사님을 지정할 수 있나요?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">네, 원하는 기사분들을 지정할 수 있습니다.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 6. 실시간 첫 접속용 팝업 레이어 공지 배너 -->
+    <div class="popup-overlay" id="popupLayer">
+        <div class="event-popup">
+            <div class="popup-close-x" onclick="closePopup()">&times;</div>
+            <div class="popup-content">
+                <div class="popup-title">EVENT</div>
+                <div class="popup-subtitle">위너스팀 이벤트</div>
+                
+                <ul class="event-list">
+                    <li class="event-item">
+                        <div class="event-num">1</div>
+                        <div class="event-text">신규 고객 & 단골 고객 모두 10% 할인 적용</div>
+                    </li>
+                    <li class="event-item">
+                        <div class="event-num">2</div>
+                        <div class="event-text">24시간 언제든 상담 및 문의 가능</div>
+                    </li>
+                    <li class="event-item">
+                        <div class="event-num">3</div>
+                        <div class="event-text">보안 시스템 및 비밀 유지 철저한 서비스</div>
+                    </li>
+                    <li class="event-item">
+                        <div class="event-num">4</div>
+                        <div class="event-text">승당제 10+1 이벤트 진행중</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="popup-footer">
+                <button class="btn-close" onclick="closePopup()">닫기</button>
+                <button class="btn-cookie" onclick="closePopup()">1일 동안 보지 않기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. 우측 하단 고정 문의 배너 상담버튼 -->
+    <div class="floating-banner" onclick="openChat()">
+        ⚡ 24시간 365일 편하게 상담주세요
+    </div>
+
+    <!-- 기능 작동 자바스크립트 -->
+    <script>
+        function openChat() {
+            window.open('https://open.kakao.com/o/sJdWuGxi', '_blank');
+        }
+
+        function closePopup() {
+            document.getElementById('popupLayer').style.display = 'none';
+        }
+
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                
+                if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    answer.style.maxHeight = '0';
+                } else {
+                    document.querySelectorAll('.faq-item').forEach(i => {
+                        i.classList.remove('active');
+                        i.querySelector('.faq-answer').style.maxHeight = '0';
+                    });
+                    
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
