@@ -149,33 +149,51 @@
 
         /* 2. 메인 히어로 홈 화면 */
         .hero-section {
-            min-height: 650px;
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 450px;
+            width: auto;
+            min-height: 690px;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            display: flex;
             align-items: center;
-            gap: 54px;
-            padding: 138px 0 72px;
+            justify-content: center;
+            padding: 150px max(20px, calc((100vw - 1200px) / 2 + 20px)) 110px;
             position: relative;
+            overflow: hidden;
+            text-align: center;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(5, 5, 12, 0.78) 34%, rgba(5, 5, 12, 0.6) 60%, rgba(0, 0, 0, 0.78) 100%),
+                linear-gradient(180deg, rgba(6, 6, 12, 0.1), #06060c 100%),
+                url('/assets/valorant-hero-bg.jpg') center / cover no-repeat;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 48%, rgba(255, 42, 95, 0.12), transparent 46%);
+            pointer-events: none;
         }
 
         .hero-section::after {
             content: '';
             position: absolute;
-            left: 50%;
-            right: -80px;
-            bottom: 32px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 42, 95, 0.55), transparent);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 46px;
+            background: #ff4054;
+            box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.28);
             pointer-events: none;
         }
 
         .hero-text-box {
-            max-width: 660px;
+            max-width: 780px;
+            margin: 0 auto;
             z-index: 2;
         }
 
         .hero-text-box h1 {
-            max-width: 660px;
+            max-width: 780px;
             font-size: 52px;
             font-weight: 800;
             line-height: 1.12;
@@ -193,12 +211,15 @@
             font-weight: 800;
             line-height: 1.75;
             margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
             word-break: keep-all;
         }
 
         .hero-buttons {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 15px;
             margin-bottom: 24px;
         }
@@ -255,7 +276,9 @@
             font-size: 14px;
             font-weight: 800;
             line-height: 1.55;
+            margin: 0 auto;
             word-break: keep-all;
+            text-align: left;
         }
 
         .hero-note-mark {
@@ -272,9 +295,7 @@
         }
 
         .hero-visual-wrap {
-            position: relative;
-            min-height: 430px;
-            z-index: 1;
+            display: none;
         }
 
         .hero-image-box {
@@ -477,83 +498,101 @@
             word-break: keep-all;
         }
 
-        /* 4. 플레이 하이라이트 영상 */
-        .section-video {
-            padding: 42px 0 52px;
-            text-align: center;
-        }
-
-        .section-video h2 {
-            font-size: 40px;
-            font-weight: 800;
-            line-height: 1.25;
-            margin-bottom: 10px;
-            word-break: keep-all;
-        }
-
-        .section-video p {
-            color: #cbd5e1;
-            font-size: 16px;
-            font-weight: 800;
-            margin-bottom: 28px;
-            word-break: keep-all;
-        }
-
-        .video-showcase {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* 4. 위너스팀 이벤트 섹션 */
+        .section-events {
+            width: auto;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding: 86px max(20px, calc((100vw - 1200px) / 2 + 20px));
             position: relative;
-            border-radius: 22px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(255, 42, 95, 0.64), rgba(255, 255, 255, 0.08), rgba(255, 20, 147, 0.28));
-            box-shadow: 0 0 28px rgba(255, 42, 95, 0.22), 0 30px 70px rgba(0, 0, 0, 0.45);
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(92, 16, 22, 0.96), rgba(76, 12, 18, 0.86) 42%, rgba(7, 7, 13, 0.9)),
+                url('/assets/valorant-hero-bg.jpg') center / cover no-repeat;
         }
 
-        .video-showcase::before {
+        .section-events::before {
             content: '';
             position: absolute;
-            inset: -16px;
-            border-radius: 28px;
-            background: radial-gradient(circle at 50% 20%, rgba(255, 42, 95, 0.24), transparent 62%);
-            filter: blur(14px);
-            opacity: 0.9;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(6, 6, 12, 0.22), rgba(6, 6, 12, 0.78)),
+                radial-gradient(circle at 72% 38%, rgba(255, 64, 84, 0.2), transparent 40%);
             pointer-events: none;
-            z-index: -1;
         }
 
-        .video-frame {
+        .events-inner {
             position: relative;
-            aspect-ratio: 16 / 9;
-            border-radius: 21px;
+            z-index: 1;
+        }
+
+        .events-title {
+            max-width: 1000px;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            color: #ffffff;
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.16;
+            border-bottom: 2px solid rgba(255, 92, 109, 0.9);
+            text-align: left;
+            word-break: keep-all;
+        }
+
+        .events-layout {
+            display: grid;
+            grid-template-columns: minmax(320px, 0.8fr) minmax(420px, 1.2fr);
+            gap: 34px;
+            align-items: center;
+        }
+
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            list-style: none;
+        }
+
+        .events-list li {
+            display: grid;
+            grid-template-columns: 34px 1fr;
+            align-items: center;
+            gap: 14px;
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.42;
+            word-break: keep-all;
+        }
+
+        .events-list span {
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            background: #ff4054;
+            border: 2px solid rgba(255, 255, 255, 0.84);
+            box-shadow: 0 0 18px rgba(255, 64, 84, 0.28);
+            font-size: 16px;
+        }
+
+        .events-visual {
+            min-height: 330px;
+            position: relative;
             overflow: hidden;
-            background: #05050b;
-            isolation: isolate;
+            border: 2px solid rgba(255, 255, 255, 0.82);
+            background: url('/assets/valorant-event-bg.gif') center / cover no-repeat;
+            box-shadow: 0 28px 58px rgba(0, 0, 0, 0.48), 0 0 24px rgba(255, 64, 84, 0.16);
         }
 
-        .video-frame iframe {
+        .events-visual::after {
+            content: '';
             position: absolute;
             inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            display: block;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.16));
             pointer-events: none;
-        }
-
-        .video-control-shield {
-            position: absolute;
-            inset: 0;
-            z-index: 10;
-            cursor: default;
-            background: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .video-frame:hover,
-        .video-control-shield:hover {
-            cursor: default;
         }
 
         /* 5. 주요 서비스 섹션 */
@@ -1198,9 +1237,10 @@
             border-radius: 12px;
             width: 100%;
             max-width: 500px;
+            max-height: calc(100vh - 40px);
             position: relative;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            overflow: hidden;
+            overflow: auto;
             margin: 20px;
         }
 
@@ -1326,22 +1366,27 @@
         /* 모바일 반응형 최적화 */
         @media (max-width: 1024px) {
             .hero-section {
-                grid-template-columns: 1fr;
-                gap: 32px;
+                min-height: 620px;
+                margin-left: 0;
+                margin-right: 0;
                 text-align: center;
-                padding: 118px 0 56px;
+                padding: 126px 20px 96px;
+                background-position: center;
             }
-            .hero-section::after { left: 12%; right: 12%; }
             .hero-text-box { margin: 0 auto; }
             .hero-text-box h1,
             .hero-text-box p { margin-left: auto; margin-right: auto; }
             .hero-text-box h1 { font-size: 42px; }
             .hero-buttons { justify-content: center; }
             .hero-note { justify-content: center; margin: 0 auto; text-align: left; }
-            .hero-visual-wrap { min-height: 390px; }
-            .hero-status-card { right: 50%; bottom: 0; transform: translateX(50%); }
             .trust-grid { grid-template-columns: repeat(2, 1fr); }
-            .section-video { padding: 34px 0 44px; }
+            .section-events { padding: 68px 20px; }
+            .section-events {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .events-layout { grid-template-columns: 1fr; }
+            .events-visual { min-height: 300px; }
             .service-grid { grid-template-columns: 1fr; }
             .service-card { min-height: 180px; text-align: center; align-items: center; }
             .reviews-cta-layout { grid-template-columns: 1fr; }
@@ -1368,17 +1413,28 @@
             .character-placeholder { width: 280px; height: 280px; }
             .crystal-core { width: 184px; height: 184px; }
             .crystal-base { bottom: 44px; }
-            .hero-status-card { position: relative; right: auto; bottom: auto; transform: none; margin: -14px auto 0; }
-            .hero-visual-wrap { min-height: 350px; }
+            .hero-section {
+                min-height: 560px;
+                padding: 112px 20px 88px;
+                background-position: center;
+            }
             .trust-grid { grid-template-columns: 1fr; }
-            .section-video h2,
+            .events-title,
             .section-services h2,
             .section-reviews h2,
             .section-price h2,
             .section-drivers h2 { font-size: 30px; }
-            .section-video p { font-size: 14px; }
-            .video-showcase { border-radius: 20px; }
-            .video-frame { border-radius: 19px; }
+            .events-list li {
+                grid-template-columns: 30px 1fr;
+                font-size: 15px;
+                gap: 10px;
+            }
+            .events-list span {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+            .events-visual { min-height: 220px; }
             .service-card { padding: 30px 24px; }
             .service-card h3 { font-size: 42px; }
             .price-cta-card { padding: 28px 24px; }
@@ -1471,21 +1527,20 @@
             </div>
         </section>
 
-        <!-- 4. 플레이 하이라이트 영상 -->
-        <section class="section-video" aria-label="발로란트 플레이 하이라이트">
-            <h2>발로란트 플레이 하이라이트</h2>
-            <p>실력은 결과로 증명합니다.</p>
-            <div class="video-showcase">
-                <div class="video-frame">
-                    <iframe
-                        src="https://www.youtube.com/embed/s6yCoNPwp7k?autoplay=1&mute=1&loop=1&playlist=s6yCoNPwp7k&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&showinfo=0"
-                        title="발로란트 플레이 하이라이트"
-                        allow="autoplay; encrypted-media"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        tabindex="-1"
-                        aria-hidden="true">
-                    </iframe>
-                    <div class="video-control-shield" aria-hidden="true" oncontextmenu="return false;"></div>
+        <!-- 4. 위너스팀 이벤트 -->
+        <section class="section-events" aria-label="위너스팀 이벤트">
+            <div class="events-inner">
+                <h2 class="events-title">발로란트 위너스팀 이벤트</h2>
+                <div class="events-layout">
+                    <ul class="events-list">
+                        <li><span>1</span>중요한 화면공유 무료 제공</li>
+                        <li><span>2</span>대리, 듀오 모두 10% 할인 제공</li>
+                        <li><span>3</span>승당제 10+1 이벤트 진행중</li>
+                        <li><span>4</span>24시간 언제든 상담 및 문의 가능</li>
+                        <li><span>5</span>보안 시스템 및 비밀 유지 철저</li>
+                        <li><span>6</span>진행 상황 실시간 확인 가능</li>
+                    </ul>
+                    <div class="events-visual" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
@@ -1822,25 +1877,33 @@
         <div class="event-popup">
             <div class="popup-close-x" onclick="closePopup()">&times;</div>
             <div class="popup-content">
-                <div class="popup-title">EVENT</div>
-                <div class="popup-subtitle">발로란트 대리 위너스팀 이벤트</div>
+                <div class="popup-title">위너스팀 이벤트</div>
+                <div class="popup-subtitle">발로란트 대리·듀오 특별 혜택</div>
 
                 <ul class="event-list">
                     <li class="event-item">
                         <div class="event-num">1</div>
-                        <div class="event-text">신규 고객 & 단골 고객 모두 10% 할인 적용</div>
+                        <div class="event-text">중요한 화면공유 무료 제공</div>
                     </li>
                     <li class="event-item">
                         <div class="event-num">2</div>
-                        <div class="event-text">24시간 언제든 상담 및 문의 가능</div>
+                        <div class="event-text">대리, 듀오 모두 10% 할인 제공</div>
                     </li>
                     <li class="event-item">
                         <div class="event-num">3</div>
-                        <div class="event-text">보안 시스템 및 비밀 유지 철저한 서비스</div>
+                        <div class="event-text">승당제 10+1 이벤트 진행중</div>
                     </li>
                     <li class="event-item">
                         <div class="event-num">4</div>
-                        <div class="event-text">승당제 10+1 이벤트 진행중</div>
+                        <div class="event-text">24시간 언제든 상담 및 문의 가능</div>
+                    </li>
+                    <li class="event-item">
+                        <div class="event-num">5</div>
+                        <div class="event-text">보안 시스템 및 비밀 유지 철저</div>
+                    </li>
+                    <li class="event-item">
+                        <div class="event-num">6</div>
+                        <div class="event-text">진행 상황 실시간 확인 가능</div>
                     </li>
                 </ul>
             </div>
