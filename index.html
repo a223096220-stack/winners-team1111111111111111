@@ -477,7 +477,86 @@
             word-break: keep-all;
         }
 
-        /* 4. 주요 서비스 섹션 */
+        /* 4. 플레이 하이라이트 영상 */
+        .section-video {
+            padding: 42px 0 52px;
+            text-align: center;
+        }
+
+        .section-video h2 {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 10px;
+            word-break: keep-all;
+        }
+
+        .section-video p {
+            color: #cbd5e1;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 28px;
+            word-break: keep-all;
+        }
+
+        .video-showcase {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 22px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 42, 95, 0.64), rgba(255, 255, 255, 0.08), rgba(255, 20, 147, 0.28));
+            box-shadow: 0 0 28px rgba(255, 42, 95, 0.22), 0 30px 70px rgba(0, 0, 0, 0.45);
+        }
+
+        .video-showcase::before {
+            content: '';
+            position: absolute;
+            inset: -16px;
+            border-radius: 28px;
+            background: radial-gradient(circle at 50% 20%, rgba(255, 42, 95, 0.24), transparent 62%);
+            filter: blur(14px);
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border-radius: 21px;
+            overflow: hidden;
+            background: #05050b;
+            isolation: isolate;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            pointer-events: none;
+        }
+
+        .video-control-shield {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            cursor: default;
+            background: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .video-frame:hover,
+        .video-control-shield:hover {
+            cursor: default;
+        }
+
+        /* 5. 주요 서비스 섹션 */
         .section-services {
             padding: 44px 0 36px;
             text-align: center;
@@ -1262,6 +1341,7 @@
             .hero-visual-wrap { min-height: 390px; }
             .hero-status-card { right: 50%; bottom: 0; transform: translateX(50%); }
             .trust-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-video { padding: 34px 0 44px; }
             .service-grid { grid-template-columns: 1fr; }
             .service-card { min-height: 180px; text-align: center; align-items: center; }
             .reviews-cta-layout { grid-template-columns: 1fr; }
@@ -1291,10 +1371,14 @@
             .hero-status-card { position: relative; right: auto; bottom: auto; transform: none; margin: -14px auto 0; }
             .hero-visual-wrap { min-height: 350px; }
             .trust-grid { grid-template-columns: 1fr; }
+            .section-video h2,
             .section-services h2,
             .section-reviews h2,
             .section-price h2,
             .section-drivers h2 { font-size: 30px; }
+            .section-video p { font-size: 14px; }
+            .video-showcase { border-radius: 20px; }
+            .video-frame { border-radius: 19px; }
             .service-card { padding: 30px 24px; }
             .service-card h3 { font-size: 42px; }
             .price-cta-card { padding: 28px 24px; }
@@ -1387,7 +1471,26 @@
             </div>
         </section>
 
-        <!-- 4. 주요 서비스 섹션 -->
+        <!-- 4. 플레이 하이라이트 영상 -->
+        <section class="section-video" aria-label="발로란트 플레이 하이라이트">
+            <h2>발로란트 플레이 하이라이트</h2>
+            <p>실력은 결과로 증명합니다.</p>
+            <div class="video-showcase">
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/s6yCoNPwp7k?autoplay=1&mute=1&loop=1&playlist=s6yCoNPwp7k&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&showinfo=0"
+                        title="발로란트 플레이 하이라이트"
+                        allow="autoplay; encrypted-media"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        tabindex="-1"
+                        aria-hidden="true">
+                    </iframe>
+                    <div class="video-control-shield" aria-hidden="true" oncontextmenu="return false;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 주요 서비스 섹션 -->
         <section class="section-services" id="services">
             <h2>주요 서비스</h2>
             <div class="service-grid">
